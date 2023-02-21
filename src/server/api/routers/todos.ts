@@ -21,7 +21,7 @@ export const todoRouter = createTRPCRouter({
     .mutation(async ({ input, ctx: { prisma, session } }) => {
       const newTodo = await prisma.todo.create({
         data: {
-          task: input.task!,
+          task: input.task,
           userId: session.user.id,
         },
       });
