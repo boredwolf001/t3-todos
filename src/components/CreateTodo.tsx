@@ -24,27 +24,30 @@ const CreateTodo: React.FC = () => {
 
     setFormData((prevData: formDataType) => ({
       ...prevData,
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment @typescript-eslint/no-unsafe-assignment
       // @ts-ignore
       [key]: e.target.value,
     }));
   };
+  // eslint-disable-next-line @typescript-eslint/no-misused-promises
+  const onSubmit: FormEventHandler = async (e: SyntheticEvent) => {
+    e.preventDefault();
+    await toast.promise(
+      mutation.mutateAsync({
+        task: formData.task,
+      }),
+      {
+        pending: "Creating the post",
+        success: "Created the post",
+        error: "Error occured",
+      }
+    );
+  };
 
   return (
     <form
-      onSubmit={async (e: SyntheticEvent) => {
-        e.preventDefault();
-        await toast.promise(
-          mutation.mutateAsync({
-            task: formData.task,
-          }),
-          {
-            pending: "Creating the post",
-            success: "Created the post",
-            error: "Error occured",
-          }
-        );
-      }}
+      // eslint-disable-next-line @typescript-eslint/no-misused-promises
+      onSubmit={onSubmit}
       className="flex w-96 items-center justify-center gap-4"
     >
       <div className="form-control w-full max-w-xs">

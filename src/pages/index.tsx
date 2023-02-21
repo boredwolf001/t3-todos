@@ -1,6 +1,6 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import { signIn, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 import CreateTodo from "../components/CreateTodo";
 import { api } from "../utils/api";
@@ -25,7 +25,7 @@ const Home: NextPage = () => {
         ) : (
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
-          <button onClick={signIn} className="btn-secondary btn">
+          <button onClick={() => signIn()} className="btn-secondary btn">
             Sign In
           </button>
         )}
@@ -43,6 +43,11 @@ const AuthShowcase: React.FC = () => {
   return (
     sessionData && (
       <>
+        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          @ts-ignore */}
+        <button onClick={() => signOut()} className="btn-warning btn mb-4">
+          Sign Out
+        </button>
         <CreateTodo />
         <TodoList todos={todoData || []} />
       </>
