@@ -18,30 +18,27 @@ const CreateTodo: React.FC = () => {
   });
   const mutation = api.todos.newTodo.useMutation();
   const onChange: ChangeEventHandler = (e: SyntheticEvent) => {
-    const key = e.currentTarget.id;
+    const key: string = e.currentTarget.id;
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     setFormData((prevData) => ({ ...prevData, [key]: e.target.value }));
   };
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  const onSubmit: FormEventHandler = async (e: SyntheticEvent) => {
-    e.preventDefault();
-    await toast.promise(
-      mutation.mutateAsync({
-        task: formData.task,
-      }),
-      {
-        pending: "Creating the post",
-        success: "Created the post",
-        error: "Error occured",
-      }
-    );
-  };
 
   return (
     <form
-      onSubmit={onSubmit}
+      onSubmit={(e: SyntheticEvent) => {
+        e.preventDefault();
+        toast.promise(
+          mutation.mutateAsync({
+            task: formData.task,
+          }),
+          {
+            pending: "Creating the post",
+            success: "Created the post",
+            error: "Error occured",
+          }
+        );
+      }}
       className="flex w-96 items-center justify-center gap-4"
     >
       <div className="form-control w-full max-w-xs">
