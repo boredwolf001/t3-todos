@@ -10,9 +10,7 @@ import { api } from "../utils/api";
 import { toast } from "react-toastify";
 import { Todo } from "@prisma/client";
 
-type Props = {};
-
-const CreateTodo: React.FC<Props> = ({}) => {
+const CreateTodo: React.FC = () => {
   const [formData, setFormData] = useState<{
     task: string;
   }>({
@@ -21,12 +19,13 @@ const CreateTodo: React.FC<Props> = ({}) => {
   const mutation = api.todos.newTodo.useMutation();
   const onChange: ChangeEventHandler = (e: SyntheticEvent) => {
     const key = e.currentTarget.id;
-    //@ts-ignore
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     setFormData((prevData) => ({ ...prevData, [key]: e.target.value }));
   };
   const onSubmit: FormEventHandler = async (e: SyntheticEvent) => {
     e.preventDefault();
-    const todo = await toast.promise(
+    await toast.promise(
       mutation.mutateAsync({
         task: formData.task,
       }),

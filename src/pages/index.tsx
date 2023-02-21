@@ -36,7 +36,7 @@ export default Home;
 
 const AuthShowcase: React.FC = () => {
   const { data: sessionData } = useSession();
-  let { data: todoData } = api.todos.getAll.useQuery();
+  const { data: todoData } = api.todos.getAll.useQuery();
 
   return (
     sessionData && (
