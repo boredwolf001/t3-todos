@@ -23,6 +23,8 @@ const CreateTodo: React.FC = () => {
     // @ts-ignore
     setFormData((prevData) => ({ ...prevData, [key]: e.target.value }));
   };
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   const onSubmit: FormEventHandler = async (e: SyntheticEvent) => {
     e.preventDefault();
     await toast.promise(
