@@ -7,6 +7,6 @@ module.exports = {
   //@ts-ignore
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ["forest"],
+    themes: ["luxury"],
   },
 };

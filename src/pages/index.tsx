@@ -17,8 +17,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center">
-        <h1 className="mb-12 text-4xl font-black text-primary">TodoFy</h1>
-        <p className="mt-4 text-xl font-medium text-secondary">
+        <h1 className="text-6xl font-black text-secondary-content">TodoFy</h1>
+        <p className="mt-4 mb-10 text-xl font-medium text-primary">
           More productive lifestyle
         </p>
         {sessionData ? (
@@ -42,7 +42,7 @@ const AuthShowcase: React.FC = () => {
   return (
     sessionData && (
       <>
-        <button onClick={() => signOut()} className="btn-warning btn mb-4">
+        <button onClick={() => signOut()} className="btn-warning btn mb-10">
           Sign Out
         </button>
         <CreateTodo />
