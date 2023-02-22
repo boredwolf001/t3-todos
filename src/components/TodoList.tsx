@@ -7,8 +7,8 @@ type Props = { todos: Todo[] };
 
 const TodoList: React.FC<Props> = ({ todos }: Props) => {
   const mutation = api.todos.markDone.useMutation();
-  const onChange = async (id: string, done: boolean) => {
-    await mutation.mutateAsync({ id, done });
+  const onChange = (id: string, done: boolean) => {
+    mutation.mutate({ id, done });
   };
 
   return (
