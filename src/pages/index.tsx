@@ -17,9 +17,10 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center">
-        <h1 className="mb-12 text-4xl font-black text-primary">
-          TodoFy | Make your life productive
-        </h1>
+        <h1 className="mb-12 text-4xl font-black text-primary">TodoFy</h1>
+        <p className="mt-4 text-xl font-medium text-secondary">
+          More productive lifestyle
+        </p>
         {sessionData ? (
           <AuthShowcase />
         ) : (
