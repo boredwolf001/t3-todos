@@ -24,7 +24,7 @@ const CreateTodo: React.FC = () => {
 
     setFormData((prevData: formDataType) => ({
       ...prevData,
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment @typescript-eslint/no-unsafe-assignment
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       [key]: e.target.value,
     }));
