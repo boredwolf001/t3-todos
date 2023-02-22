@@ -35,6 +35,7 @@ const CreateTodo: React.FC = () => {
         error: "Error occured",
       }
     );
+    formData.task = "";
   };
 
   return (
