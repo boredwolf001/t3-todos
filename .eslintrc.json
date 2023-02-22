@@ -26,6 +26,6 @@
         "checksVoidReturn": false
       }
     ],
-    "@typescript-eslint/no-unsafe-assignment": "warning"
+    "@typescript-eslint/no-unsafe-assignment": "warn"
   }
 }
