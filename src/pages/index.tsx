@@ -42,8 +42,6 @@ const AuthShowcase: React.FC = () => {
   return (
     sessionData && (
       <>
-        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          @ts-ignore */}
         <button onClick={() => signOut()} className="btn-warning btn mb-4">
           Sign Out
         </button>
