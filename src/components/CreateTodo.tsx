@@ -1,10 +1,9 @@
-import React, {
+import type {
   ChangeEventHandler,
-  FormEvent,
   FormEventHandler,
   SyntheticEvent,
-  useState,
 } from "react";
+import React, { useState } from "react";
 import { api } from "../utils/api";
 import { toast } from "react-toastify";
 
@@ -17,14 +16,11 @@ const CreateTodo: React.FC = () => {
     task: "",
   });
   const mutation = api.todos.newTodo.useMutation();
-  const onChange: ChangeEventHandler = (e: FormEvent) => {
-    const key: string = e.currentTarget.id;
-
+  const onChange: ChangeEventHandler = (e: SyntheticEvent) => {
+    const target = e.target as HTMLInputElement;
     setFormData((prevData: formDataType) => ({
       ...prevData,
-      // eslint-disable-next-line
-      // @ts-ignore
-      [key as string]: e.currentTarget.value,
+      task: target.value,
     }));
   };
   const onSubmit: FormEventHandler = async (e: SyntheticEvent) => {
