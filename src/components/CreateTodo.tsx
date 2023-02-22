@@ -1,14 +1,12 @@
 import React, {
   ChangeEventHandler,
-  Dispatch,
+  FormEvent,
   FormEventHandler,
-  SetStateAction,
   SyntheticEvent,
   useState,
 } from "react";
 import { api } from "../utils/api";
 import { toast } from "react-toastify";
-import { Todo } from "@prisma/client";
 
 type formDataType = {
   task: string;
@@ -19,17 +17,16 @@ const CreateTodo: React.FC = () => {
     task: "",
   });
   const mutation = api.todos.newTodo.useMutation();
-  const onChange: ChangeEventHandler = (e: SyntheticEvent) => {
+  const onChange: ChangeEventHandler = (e: FormEvent) => {
     const key: string = e.currentTarget.id;
 
     setFormData((prevData: formDataType) => ({
       ...prevData,
       // eslint-disable-next-line
       // @ts-ignore
-      [key]: e.target.value,
+      [key as string]: e.currentTarget.value,
     }));
   };
-  // eslint-disable-next-line @typescript-eslint/no-misused-promises
   const onSubmit: FormEventHandler = async (e: SyntheticEvent) => {
     e.preventDefault();
     await toast.promise(
@@ -46,7 +43,6 @@ const CreateTodo: React.FC = () => {
 
   return (
     <form
-      // eslint-disable-next-line @typescript-eslint/no-misused-promises
       onSubmit={onSubmit}
       className="flex w-96 items-center justify-center gap-4"
     >

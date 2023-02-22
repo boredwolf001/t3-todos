@@ -24,8 +24,6 @@ const Home: NextPage = () => {
         {sessionData ? (
           <AuthShowcase />
         ) : (
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
           <button onClick={() => signIn()} className="btn-secondary btn">
             Sign In
           </button>
